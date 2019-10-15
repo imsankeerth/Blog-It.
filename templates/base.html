@@ -1,0 +1,32 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Blogs </title>
+		<link rel="stylesheet"  href="{% static 'css/bodystyle.css' %}">
+	</head>
+	<body>
+			<h1 align="center" style="color: grey">Blog It.</a></h1>
+			<h3 align="left"><a href="/">HOME</a></h3>
+		<div >
+			<h3 align="left"><a href="{% url 'new_blog' %}">Add new Blog</a></h3>
+		</div>
+		<div>
+			{% if user.is_authenticated %}
+			<p><a href="{% url 'logout' %}"><h3>Logout</h3></a></p>
+			<p align="center" style="color:blue; padding-right: 50px;"><strong>Message: Hey there! {{user.username}}</strong> </p>
+		</div>
+			{% else %}
+			<div>
+			<p> <a href="{% url 'login' %}"><h3>Login</h3></a></p>
+			<p> <a href="{% url 'signup' %}"><h3>Signup</h3></a></p>
+			<p align="center" style="color:blue; padding-right: 50px; font-size:20"><strong>Message:You are not logged in</strong></p>
+		</div>
+			{% endif%}
+			</div>
+			<div class="container">
+			{% block content %}
+            {% endblock content %}
+		</div>
+	</body>
+</html> 

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<h2>This is Delete Page</h2>
+<form action="" method="POST">
+	{% csrf_token %}
+	<h3>WARNING!!</h3>
+	<p>Are you sure to delete the blog:{{ batman.Name }}</p>
+	<input type="submit" value="Confirm">
+	<a href="/"><input type="button" value="No"></a>
+</form>
+{% else %}
+<h1>Please Login</h1>
+{% endif %}
+{% endblock %}
